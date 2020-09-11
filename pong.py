@@ -35,6 +35,37 @@ ball.penup()
 ball.goto(0, 0)
 
 
+# Functions to make the paddles move
+def paddle_a_up():
+    y = paddle_a.ycor() # ycor() comes from the turtle module and returns the turtle\'s y coordinates
+    y += 20
+    paddle_a.sety(y) # sety() sets the y coordinate of the turtle to the float or int you pass through
+
+
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
+
+
+def paddle_b_up():
+    y = paddle_b.ycor()
+    y += 20
+    paddle_b.sety(y)
+
+
+def paddle_b_down():
+    y = paddle_b.ycor()
+    y -= 20
+    paddle_b.sety(y)
+
+
+# keyboard binding
+window.listen() # This makes the window to listen keyword inputs
+window.onkeypress(paddle_a_up, 'w')
+window.onkeypress(paddle_a_down, 's')
+window.onkeypress(paddle_b_up, 'Up')
+window.onkeypress(paddle_b_down, 'Down')
 # Main game loop
 while True:
     window.update()
