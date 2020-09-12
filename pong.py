@@ -85,3 +85,11 @@ while True:
     elif ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+
+    elif ball.xcor() > 390:
+        ball.goto(0, 0) # If you got a point, the ball will return to the center
+        ball.dx *= -1
+    
+    elif ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
