@@ -6,6 +6,13 @@ window.bgcolor('black') #sets the background color of the window to black
 window.setup(width=800, height=600) # The window will be 800 * 600
 window.tracer(0) # speeds up the game by no self updating
 
+
+# Score
+score_a = 0
+score_b = 0
+
+
+
 # Paddle A
 paddle_a = turtle.Turtle()
 paddle_a.speed(0) # This is the speed of the animation, not the paddle speed
@@ -36,6 +43,15 @@ ball.goto(0, 0)
 ball.dx = 0.2 # dx is delta x
 ball.dy = 0.2 # dy is delta y and move 2 px
 
+
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color('white')
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write('Player A: 0 | Player B: 0', align='center', font=('Courier', 24, 'normal'))
 
 # Functions to make the paddles move
 def paddle_a_up():
@@ -89,18 +105,23 @@ while True:
     elif ball.xcor() > 390:
         ball.goto(0, 0) # If you got a point, the ball will return to the center
         ball.dx *= -1
-    
+        score_a += 1
+        pen.clear() # Clears the window so you can update scores
+        pen.write(f'Player A: {score_a} | Player B: {score_b}', align='center', font=('Courier', 24, 'normal'))
+
     elif ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_b += 1
+        pen.clear()
+        pen.write(f'Player A: {score_a} | Player B: {score_b}', align='center', font=('Courier', 24, 'normal'))
 
     # Paddle and ball collissions
 
-    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() -40):
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() -40):
         ball.setx(340)
         ball.dx *= -1
 
-    elif (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() - 40):
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
         ball.setx(-340)
         ball.dx *= -1
-        
