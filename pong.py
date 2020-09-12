@@ -33,8 +33,8 @@ ball.shape('square')
 ball.color('white')
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2 # dx is delta x
-ball.dy = 2 # dy is delta y and move 2 px
+ball.dx = 0.2 # dx is delta x
+ball.dy = 0.2 # dy is delta y and move 2 px
 
 
 # Functions to make the paddles move
