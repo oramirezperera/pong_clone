@@ -1,4 +1,5 @@
 import turtle
+import winsound
 
 window = turtle.Screen()
 window.title('Pong clone')
@@ -97,10 +98,12 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        winsound.PlaySound('bounce.wav', winsound.SND_ASYNC)
 
     elif ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+        winsound.PlaySound('bounce.wav', winsound.SND_ASYNC)
 
     elif ball.xcor() > 390:
         ball.goto(0, 0) # If you got a point, the ball will return to the center
@@ -121,7 +124,9 @@ while True:
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() -40):
         ball.setx(340)
         ball.dx *= -1
+        winsound.PlaySound('bounce.wav', winsound.SND_ASYNC)
 
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
         ball.setx(-340)
         ball.dx *= -1
+        winsound.PlaySound('bounce.wav', winsound.SND_ASYNC)
