@@ -130,3 +130,11 @@ while True:
         ball.setx(-340)
         ball.dx *= -1
         winsound.PlaySound('bounce.wav', winsound.SND_ASYNC)
+
+    # AI player
+
+    if paddle_b.ycor() < ball.ycor() and abs(paddle_b.ycor() - ball.ycor()) > 10:
+        paddle_b_up()
+    
+    elif paddle_b.ycor() > ball.ycor() and abs(paddle_b.ycor() - ball.ycor()) > 10:
+        paddle_b_down()
